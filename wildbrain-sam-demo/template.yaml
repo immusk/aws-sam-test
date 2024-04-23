@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  {{ cookiecutter.project_name }}
+  wildbrain-sam-demo
 
-  Sample SAM Template for {{ cookiecutter.project_name }}
+  Sample SAM Template for wildbrain-sam-demo
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -18,12 +18,8 @@ Resources:
       CodeUri: hello_world/
       Handler: app.lambda_handler
       Runtime: python3.9
-      {%- if cookiecutter.architectures.value != []%}
       Architectures:
-      {%- for arch in cookiecutter.architectures.value %}
-        - {{arch}}
-      {%- endfor %}
-      {%- endif %}
+        - x86_64
       Events:
         HelloWorld:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
